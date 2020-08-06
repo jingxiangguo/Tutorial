@@ -3,13 +3,15 @@
 
 ## Instructions:
 
-* Make sure shell script "compile" is exectuable
+* Make the shell script "compile" exectuable
 
 ```
 chmod 755 compile
 
 ```
-* Choose the appropriate Fortran compiler (default is ifort) 
+* Open the shell script "compile"; Uncomment/comment compiler command
+
+* The default is intel Fortran: ifort 
 
 * Run the "compile"
 

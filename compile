@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# This shell script invoke a Fortran compiler to compile *.f90 files into a dynamic library *.so file
 
 # modify the compiler.
 # Make sure the Fortran compiler supports Fortran2003 standard 
@@ -12,6 +13,11 @@
 # 2. http://geco.mines.edu/prototype/manpages/ifort.html  
 
 # uncomment if Intel Fortran compiler is used
+# -fPIC: Generate position-independent code 
+# -shared: compile the source code into dynamic library *.so file
+# -O3: optimization level (O2 is the default; O3 is the highest optimization) 
+# -o: output name of dynamic library
+
 module load intel
 ifort -fPIC -shared -O3 dcd_mod.f90 -o libdcd.so 
 ifort -fPIC -shared -O3 pair_correlation_mod.f90 -o lib_pair_correlation.so 

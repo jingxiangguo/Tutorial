@@ -163,7 +163,7 @@ for current_frame in range(1,total_frames+1):
     # compute distance histogram:
     rdf_histogram, volume = compute_pair_correlation(total_atoms, xyz, box, cutoff, num_bins)
 
-    # accumulate histogram 
+    # accumulate distance histogram 
     cum_rdf_histogram += rdf_histogram  
 
     # accumlate density 
@@ -172,10 +172,11 @@ for current_frame in range(1,total_frames+1):
 # compute density
 bulk_density = rho/total_frames
 
+# normalize the distance histogram
 r, gr = normalize_histogram(cum_rdf_histogram, bulk_density,num_bins, total_atoms, cutoff, total_frames)    
 
-
 # compare with Figure 3 in https://pubs.acs.org/doi/pdf/10.1021/jp805227c 
+
 plt.plot(r, gr) 
 
 plt.title("mW 298K 1bar")
