@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+ifort -fPIC -shared dcd_mod.f90 -o libdcd.so
+
+ifort -fPIC -shared pair_correlation_mod.f90 -o lib_pair_correlation.so 
