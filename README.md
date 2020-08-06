@@ -21,9 +21,9 @@ git clone https://github.com/jingxiangguo/Tutorial.git
 chmod 755 compile
 ```
 
-* Open the shell script "compile"; Uncomment/comment compiler options
+* Modify the compiler options in the shell script "compile" if needed
 
-* The default is Intel Fortran
+* The default is Intel Fortran (works on juniper)
 
 * Run the "compile"
 
