@@ -1,6 +1,23 @@
 #!/bin/bash
 
 
-ifort -fPIC -shared dcd_mod.f90 -o libdcd.so
+# modify the compiler.
+# Make sure the Fortran compiler supports Fortran2003 standard 
 
-ifort -fPIC -shared pair_correlation_mod.f90 -o lib_pair_correlation.so 
+
+# compiler used here: intel Fortran compiler: 18.0.3
+
+# For more details of compiler options: consult
+# 1. https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html 
+# 2. http://geco.mines.edu/prototype/manpages/ifort.html  
+
+# uncomment if Intel Fortran compiler is used
+module load intel
+ifort -fPIC -shared -O3 dcd_mod.f90 -o libdcd.so 
+ifort -fPIC -shared -O3 pair_correlation_mod.f90 -o lib_pair_correlation.so 
+
+# compiler used here:  gcc version 4.8.5
+
+# uncomment if gfortran is used: 
+# gfortran -fPIC -shared dcd_mod.f90 -o libdcd.so -O3 
+# gfortran -fPIC -shared pair_correlation_mod.f90 -o lib_pair_correlation.so -O3 
