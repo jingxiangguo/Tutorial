@@ -47,15 +47,14 @@ def call_read_dcd_xyz_box(dcdfile, current_frame, total_atoms, return_numpy):
     total_atoms = c_int(total_atoms)
 
     # box = (c_double*3)()
+    # "np.ctypeslib.as_ctypes" converts a numpy array into ctypes array
     box = np.ctypeslib.as_ctypes(np.zeros(3, dtype=np.float64))
 
-    # xyz = ((c_float*total_atoms.value)*3)()
-
+    # Don't worry about ctypes array dimensions.  Only array size matters!
     xyz = np.ctypeslib.as_ctypes(np.zeros(total_atoms.value*3,
                                           dtype=np.float32))
 
     # current_frame = c_int(current_frame)
-
     dcd_lib.call_dcd_traj(dcdfile,
                           byref(strlength),
                           byref(total_atoms),
@@ -63,14 +62,18 @@ def call_read_dcd_xyz_box(dcdfile, current_frame, total_atoms, return_numpy):
                           xyz,
                           box)
 
+    # return as Numpy for downstream analysis in Python
     if (return_numpy):
 
+        # switch from column-major order in Fortran to row-major order in C/C++/Python
+        # conver the ctypes array into a numpy array
         xyz = np.ctypeslib.as_array(xyz).reshape((total_atoms.value, 3))
 
         box = np.ctypeslib.as_array(box)
 
         return xyz, box
 
+    # return as c data type as an intermdiate (more efficient) 
     else:
 
         # convert to double precision

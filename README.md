@@ -9,6 +9,12 @@
 
 ## Instructions:
 
+* Download the repository
+
+```
+git clone https://github.com/jingxiangguo/Tutorial.git 
+```
+
 * Make the shell script "compile" exectuable
 
 ```
@@ -23,11 +29,9 @@ chmod 755 compile
 
 ```
 ./compile
-
 ```
 * Run Python script 
 
 ```
 python calc_pair_correlation.py 
-
 ```
