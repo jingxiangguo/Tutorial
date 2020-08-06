@@ -1,9 +1,9 @@
-# A general approach of extending Python with Fortran
+# A general approach to extend Python with Fortran
 
-## Required: 
+## Required:
 * Python 3.7 (Recommended)
-* ctypes 
-* numpy
+* ctypes (already included in Python standard library)
+* numpy==1.18.x 
 * matplotlib
 * A Fortran compiler supporting Fortran2003 standard
 
