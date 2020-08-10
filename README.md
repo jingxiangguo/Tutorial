@@ -1,5 +1,9 @@
 # A general approach to extend Python with Fortran
 
+## Example: 
+* computing g(r) of mW [1] water model at 298 K  
+<img src="gr_mW_298K.png" width="800">
+
 ## Required:
 * Python 3.7 (Recommended)
 * ctypes (already included in Python standard library)
@@ -35,3 +39,8 @@ chmod 755 compile
 ```
 python calc_pair_correlation.py 
 ```
+
+
+## Reference:
+
+[1]: Molinero, V., & Moore, E. B. (2009). Water Modeled As an Intermediate Element between Carbon and Silicon. J. Phys. Chem. B, 113(13), 4008–4016. https://doi.org/10.1021/jp805227c
