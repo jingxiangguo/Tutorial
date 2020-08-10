@@ -1,10 +1,13 @@
 module dcd_reader
     use iso_c_binding, only: c_int, c_float, c_double, c_char
     implicit none 
-
+    
+    ! All variables/subroutines/functions 
+    ! in this module are private by default
+    ! The exceptions are made by "public" below
     private
 
-    ! accessible by other Fortran module or routines
+    ! Manually change the accessbility by other Fortran module or routines 
     public :: readdcdheader, read_xyz_box
 
 contains

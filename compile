@@ -2,11 +2,12 @@
 
 # This shell script invoke a Fortran compiler to compile *.f90 files into a dynamic library *.so file
 
-# modify the compiler.
+# modify the compiler: Intel or GNU
+
 # Make sure the Fortran compiler supports Fortran2003 standard 
 
 
-# compiler used here: intel Fortran compiler: 18.0.3
+# compiler tested here: intel Fortran compiler: 18.0.3
 
 # For more details of compiler options: consult
 # 1. https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html 
@@ -18,11 +19,26 @@
 # -O3: optimization level (O2 is the default; O3 is the highest optimization) 
 # -o: output name of dynamic library
 
+
+# *************** Important **************
+# 1. Load an intel fortran copmiler
+# 2. Use it to compile the fortran source code into dynamic library
+# 3. Launch the Python in the same environment
+# Otherwise you might get an error like: "cannot open shared object file: No such file or directory libifport.so.5" 
+
+# To solve this:
+# 1. you have to use the shell command: "echo $LD_LIBRARY_PATH"   
+# 2. Then find out the intel compiler installation folder like: "intel-2018u3/lib/intel64" 
+# 3. Mannually set the dynamic library path by in the shell prompt: 
+#   "export LD_LIBRARY_PATH=intel-2018u3/lib/intel64/"
+
 module load intel
+
+
 ifort -fPIC -shared -O3 dcd_mod.f90 -o libdcd.so 
 ifort -fPIC -shared -O3 pair_correlation_mod.f90 -o lib_pair_correlation.so 
 
-# compiler used here:  gcc version 4.8.5
+# compiler tested here:  gcc version 4.8.5
 
 # uncomment if gfortran is used: 
 # gfortran -fPIC -shared dcd_mod.f90 -o libdcd.so -O3 

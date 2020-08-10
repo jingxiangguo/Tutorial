@@ -190,7 +190,9 @@ plt.xlim([2,9])
 
 plt.ylabel("g(r)")
 
-plt.xlabel("r (A)")
+plt.xlabel(r"r($\AA$)")
+
+plt.savefig("gr_mW_298K.png")
 
 plt.show() 
 
